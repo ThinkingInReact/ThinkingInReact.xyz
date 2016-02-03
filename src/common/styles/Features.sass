@@ -1,0 +1,38 @@
+.Features
+  background: linear-gradient(to bottom, darken($aliports, 20%), lighten($aliports, 10%))
+  color: white
+  padding: 1.2rem 5rem 5rem 5rem
+  box-shadow: inset 0 -10px 10px -10px hsla(0, 0%, 10%, 0.2)
+
+.Features__Title
+  @extend .Section-Title
+
+.Features__Rows
+  padding: 0
+  display: flex
+  flex-wrap: wrap
+
+.Feature
+  flex: 1 1 20rem
+  display: flex
+  margin: 2rem
+  font-size: 0.8rem
+  font-weight: 100
+
+  .FeatureImg
+    margin: 0.9rem 0rem 0 0
+    float: left
+    height: 2rem
+
+  .FeatureImg svg
+    width: 3rem
+    height: 3rem
+    fill: $black
+    position: relative
+    opacity: 0.8
+
+  .FeatureDesc
+    padding-left: 3rem
+
+.Feature__Title
+  font-size: 1rem

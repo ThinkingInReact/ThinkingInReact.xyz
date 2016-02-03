@@ -1,0 +1,43 @@
+.Packages:before
+  border-top: 1px solid darken($solitude, 10%)
+  background: linear-gradient(45deg, #fca5f1, #b5ffff)
+  height: 20rem
+  width: 100%
+  content: ' '
+  z-index: 1
+  position: relative
+  top: 0px
+  display: block
+
+.Packages
+  border-top: 1px solid white
+  background: $concrete
+
+.Packages__Rows
+  display: flex
+  top: -15rem
+  z-index: 100
+  position: relative
+
+.Package
+  background: #fff
+  padding: 0 1.2rem
+  border-radius: 0.4rem
+  margin: 10px
+  flex: 1
+  box-shadow: rgba(219, 219, 219, 0.56) 0px 3px 8px 0px
+
+.Package__Title
+  position: relative
+  top: -4.5rem
+  font-family: $megrim
+  text-align: center
+
+.Package__Desc
+  position: relative
+  top: -2.5rem
+  font-weight: 100
+
+.Footer
+  @extend .Header
+  box-shadow: inset 0 10px 10px -10px hsla(0, 0%, 10%, 0.5)

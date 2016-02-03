@@ -1,0 +1,42 @@
+.Login__Container
+  @extend .Modal
+
+.Login__Container--closed
+  @extend .Model--closed
+
+.Login
+  padding: 2rem
+  overflow: hidden
+
+  .LoginClose
+    @extend .Close
+    top: -.8rem
+    right: 0rem
+
+  form
+    @extend .Form
+
+    input
+      margin-bottom: 1.2rem
+      width: 100%
+      padding: 1rem 0 1rem 1rem
+
+    .Login__Email--errors
+      @extend input.error
+
+    .Login__Password--errors
+      @extend input.error
+
+  .LoginButton, .Login__Submitting
+    float: right
+
+.LoginButton
+  @extend .button
+  color: $black-squeeze
+  border: 2px solid $inch-worm
+
+.Login__Error
+  @extend label.error
+  font-size: 1.2rem
+  padding: 1.2rem 1rem
+  text-align: center

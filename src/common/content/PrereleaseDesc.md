@@ -1,0 +1,1 @@
+During the beta period the book is priced according to how many chapters are finished. Every time a new chapter or subchapter is released the book's price increases by $1. The sooner you buy the cheaper you get the final book for.

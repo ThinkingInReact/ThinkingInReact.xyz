@@ -1,0 +1,79 @@
+.Buy__Container
+  @extend .Modal
+
+.Buy__Container--closed
+  @extend .Model--closed
+
+.BuyButton
+  @extend .button
+  background: none
+  color: $black-squeeze
+  border: 2px solid $inch-worm
+  padding: 0.8rem
+  text-align: center
+
+  .BuyButton__Text
+    padding-left: 10px
+
+  svg
+    width: 12px
+    height: 12px
+    fill: $black
+
+.Buy
+  padding: 2rem
+
+  .BuyButton
+    margin-top: 1.2rem
+
+  .CardThing__container
+    margin: 0 auto 1.5rem auto
+
+  .Buy__Submit
+    text-align: center
+
+  .BuyClose
+    @extend .Close
+    right: -4rem
+    top: 0rem
+
+  form
+    @extend .Form
+
+    input
+      margin-bottom: 1.2rem
+      padding: 1rem 0 1rem 1rem
+      width: 100%
+
+    input:focus
+      box-shadow: none
+
+    .CardExpiration__Container, .CardCVC__Container
+      display: inline-block
+
+      label
+        float: left
+        padding: 0rem 1rem
+
+    .CardExpiration__Container
+      width: 50%
+
+      input
+        border-right: 0
+
+      input.error
+        border-right: 2px solid $amaranth
+
+    .CardCVC__Container
+      width: 50%
+
+.StripeImg
+  float: right
+  position: relative
+  margin: -2rem -15rem 0 0
+
+.Buy__Error
+  @extend label.error
+  font-size: 1.2rem
+  padding: 1.2rem 1rem
+  text-align: center

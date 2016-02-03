@@ -1,0 +1,58 @@
+.Header
+  background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, .2)), url('../images//background.svg')
+  background-size: cover
+  box-shadow: inset 0 -10px 10px -10px hsla(0, 0%, 10%, 0.5)
+  color: $black-squeeze
+  font-weight: 300
+
+  a
+    text-decoration: none
+
+  .ReadButton
+    margin-right: 1.5rem
+
+  nav
+    float: right
+    padding-top: 1.2rem
+
+  .ShortDesc
+    padding: 3.4rem 4rem 2rem 4rem
+    font-size: 0.8rem
+
+  .DuringLaunch
+    margin: 1.8rem auto 0rem auto
+
+nav a
+  @extend .LightThinFont
+  color: darken($aliports, 30%)
+  text-decoration: none
+  transition: all 0.2s ease
+  margin-right: 1.2rem
+
+nav a:hover
+  color: $black-squeeze
+
+.Header__Title
+  @extend .Title
+  clear: right
+  padding: 1.4rem 0 0rem 0
+  margin-bottom: -2.6rem
+
+.Header__Inner
+  @extend .InnerBody
+  text-align: center
+  padding-top: 0
+  padding-bottom: 1.2rem
+
+.BuyButton
+  @extend .button
+  color: $black-squeeze
+  border: 2px solid $inch-worm
+
+.ReadButton
+  @extend .button
+  color: $black-squeeze
+
+.DuringLaunch
+  @extend .LightThinFont
+  font-size: 0.6rem

@@ -1,0 +1,46 @@
+.Examples__Title
+  @extend .Section-Title
+
+.Examples p
+  @extend .Body-text
+  line-height: 1.8rem
+
+.Example
+  padding: 5rem
+
+.Example__Inner
+  display: flex
+
+.Example__Img_Container
+  width: 35%
+  margin-right: 2.5rem
+
+  img
+    width: 100%
+
+.Example__Desc
+  width: 65%
+
+.Example:first-child, .Example:nth-child(3)
+  background: $romance
+  border-top: 1px solid $solitude
+  width: 100%
+
+.Example:nth-child(2),
+  border-top: 1px solid $solitude
+  border-bottom: 1px solid $solitude
+
+.Example:nth-child(2), .Example:nth-child(4)
+  background: linear-gradient(to bottom, lighten($solitude, 20%), white)
+  border-top: 1px solid $solitude
+
+  .Example__Img_Container
+    order: 2
+    margin-right: 0
+    margin-left: 2.5rem
+
+.Example__Links
+  padding-top: 0rem
+
+  a
+    padding-right: 0.8rem

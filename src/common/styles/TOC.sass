@@ -1,0 +1,32 @@
+.TOC
+  background: linear-gradient(to bottom, $solitude, white)
+  color: $black
+  padding: 0 5rem 5rem 5rem
+  border-top: 4px solid $solitude
+  box-shadow: inset 0 -10px 10px -10px hsla(0, 0%, 10%, 0.5)
+
+.TOC__Title
+  @extend .Section-Title
+  color: $lucky-point
+
+.TOC ul, .TOC li
+  margin: 0
+  padding: 0
+  list-style: none
+  list-style-type: none
+  font-size: 0.8rem
+  color: hsla(0, 0%, 66%, 0.5)
+
+.TOC > div > ul
+  display: flex
+  flex-wrap: wrap
+
+.TOC > div > ul > li
+  flex: 1
+  min-width: 10rem
+  list-style: none
+  margin: 3rem
+
+.TOC > div > ul > li > :first-child, .TOC > div > ul > li:last-child
+  font-weight: bold
+  font-size: 1.2rem

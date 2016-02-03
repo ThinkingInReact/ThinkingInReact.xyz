@@ -1,0 +1,1 @@
+Learn React, Flux, Webpack, Redux and more. This book walks you through solving real world problems in a _React way_. It covers concepts like immutability, reducers, declarative views, and flux architectures through real world UI projects. Through building things like drag and drop widgets, sliders, menus and todo apps you will learn to _think in_ React.
