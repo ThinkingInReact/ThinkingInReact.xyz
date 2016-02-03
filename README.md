@@ -26,7 +26,7 @@ This will boot up webpack and webpack-dev-middleware and manage it through node-
 
 ## Deploying
 
-There are two steps;
+There are three steps;
 
 1. Make sure you environment has the correct environment variables (look to env for this)
 2. Compile the server using `$ npm run dist && npm run webpack:server`
