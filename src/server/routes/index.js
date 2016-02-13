@@ -1,28 +1,29 @@
+/*eslint no-console: 0*/
 import Packages from 'content//Packages';
-import BuySchema from 'validators//buy';
+import BuySchema from 'schemas/buy';
 
 var passport = require('passport');
 var express = require('express');
 var validate = require('express-jsonschema').validate;
 var router = express.Router();
-var GitHubApi = require("github");
-var User = require('../models/user');
+var GitHubApi = require('github');
+var User = require('../models/').User;
 
-const stripe = require("stripe")(
+const stripe = require('stripe')(
 	process.env['STRIPE_SECRET']
 );
 
 let github = new GitHubApi({
-  version: "3.0.0"
+  version: '3.0.0'
 });
 
 github.authenticate({
-	type: "oauth",
+	type: 'oauth',
 	token: process.env['GITHUB_TOKEN']
 });
 
 function inviteToGitHubRepo(user) {
-	if(process.env.NODE_ENV == "production") {
+	if(process.env.NODE_ENV != 'development') {
 	  github.orgs.addTeamMembership({id: process.env['GITHUB_TEAM_ID'] , user: user.githubUser}, function(error,info){
 	    if(error){
 	      console.log('Failed To Invite GitHub User', user.githubUser, error);
@@ -43,18 +44,19 @@ router.post('/buy', validate({body: BuySchema}), function(req, res, next) {
 		currency: 'usd',
 		source: stripeToken,
 		receipt_email: req.body.email,
-		description: 'Bought book ThinkingInReact',
+		description: 'Bought Thinking In React',
 		metadata: {
 			email: req.body.email,
 			name: req.body.name
 		}
-	}, function(err, charge) {
+	}, function(err) {
     if(err) {
+			console.log(err);
+			
 			switch (err.type) {
 			  case 'StripeCardError':
-			    return res.status(402).json({error: {message: "Your Card Was Declined" }});
+			    return res.status(402).json({error: {message: 'Your Card Was Declined' }});
 				default:
-					console.log(err);
 			    return res.status(402).json({error: {message: "Couldn't process your payment. Please email k@2052.me (or @k_2052 on twitter)" }});
 			}
     } else {
@@ -90,7 +92,7 @@ router.post('/buy', validate({body: BuySchema}), function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
+  passport.authenticate('local', function(err, user) {
     if (err) return next(err);
 
     if (!user) {
