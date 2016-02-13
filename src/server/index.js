@@ -1,8 +1,9 @@
+/*eslint no-console: 0*/
+
 /**
  * This is compiled to the root of the project (server.js) so all import paths should be relative to that location
  */
 import 'source-map-support/register';
-import fs from 'fs';
 import path from 'path';
 import React from 'react';
 import ECT from 'ect';
@@ -13,8 +14,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import passport from 'passport';
-import { Strategy as LocalStrategy } from 'passport-local';
-import User from './models/user';
+import { User } from './models'
 import routes from './routes';
 import configureStore from './store';
 import initialData from './initialData';
@@ -67,7 +67,7 @@ app.use(passport.session());
 app.use(routes);
 
 // Dev Stuff
-if(process.env['NODE_ENV'] != 'production') {
+if(process.env['NODE_ENV'] == 'development') {
   // Webpack middleware
   webpack = require('webpack');
   webpackDevMiddleware = require('webpack-dev-middleware');
@@ -130,3 +130,5 @@ app.listen(process.env.PORT, function(err) {
   }
   console.log('Listening at localhost:' + process.env.PORT);
 });
+
+export { app };
