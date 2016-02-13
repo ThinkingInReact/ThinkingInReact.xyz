@@ -1,5 +1,5 @@
 import cc from 'credit-card';
-import extractExpiryMonthAndYear from 'lib//extractExpiryMonthAndYear';
+import extractExpiryMonthAndYear from 'lib//sanitizers/extractExpiryMonthAndYear';
 
 function isValidEmail(emailAddress) {
   var pattern = new RegExp(/@/);
@@ -25,20 +25,20 @@ function validate(values) {
   }
 
   if(!validation.validExpiryMonth) {
-    errors.expiration = "Expiration Month is Invalid";
+    errors.expiration = 'Expiration Month is Invalid';
   }
 
   if(!validation.validExpiryYear) {
-    errors.expiration = "Expiration Year is Invalid";
+    errors.expiration = 'Expiration Year is Invalid';
   }
 
   // TODO: Figure out how to do this without excluding valid cards
   if(!validation.validCvv) {
-    // errors.cvc = "CVC is Invalid";
+    // errors.cvc = 'CVC is Invalid';
   }
 
   if(!isValidEmail(values.email)) {
-    errors.email = "Email is invalid";
+    errors.email = 'Email is invalid';
   }
 
   return errors;
