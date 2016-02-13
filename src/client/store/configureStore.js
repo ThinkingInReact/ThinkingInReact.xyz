@@ -1,3 +1,5 @@
+/*global __DEV__ Stripe */
+
 import { compose, createStore, applyMiddleware } from 'redux';
 import {persistStore, autoRehydrate} from 'redux-persist';
 import { persistState } from 'redux-devtools';
@@ -6,7 +8,7 @@ import rootReducer from 'reducers//';
 import DevTools from 'containers//DevTools';
 
 // TODO: Check For Stripe
-if(window.hasOwnProperty('Stripe')) {
+if (window.hasOwnProperty('Stripe')) {
   Stripe.setPublishableKey(window.__STRIPE_PUBLIC__);
 }
 
