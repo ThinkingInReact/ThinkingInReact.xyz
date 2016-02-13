@@ -17,9 +17,10 @@ import userDetailsFromFormValues from 'lib//sanitizers/userDetailsFromFormValues
 class Buy extends Component {
   handleSubmit(values) {
     try {
-      this.props.buy(stripeCreditCardFromFormValues(), userDetailsFromFormValues(values), this.props.packge.id)
+      this.props.buy(stripeCreditCardFromFormValues(values), userDetailsFromFormValues(values), this.props.packge.id)
     } catch (e) {
-      this.props.markBuyFormAsFailed('Your credit is invalid')
+      console.log(e)
+      this.props.markBuyFormAsFailed('Your credit card is invalid')
     }
   }
 
