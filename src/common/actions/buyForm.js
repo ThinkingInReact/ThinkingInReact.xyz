@@ -1,38 +1,34 @@
-import cc from 'credit-card';
-import { startSubmit, stopSubmit } from 'redux-form';
-import { checkAndParse } from 'lib//fetchMiddleware';
-import extractExpiryMonthAndYear from 'lib//extractExpiryMonthAndYear';
-import { addUser } from './user';
+/*global Stripe */
+
+import { startSubmit, stopSubmit } from 'redux-form'
+import { checkAndParse } from 'lib//fetchMiddleware'
+import { addUser } from './user'
 
 export function openBuyForm(packageId = 'book') {
   return {
     type: 'OPEN_BUY_FORM',
     packageId
-  };
+  }
 }
 
 export function closeBuyForm() {
   return {
     type: 'CLOSE_BUY_FORM'
-  };
-}
-
-export function boughtBook() {
-  return {
-    type: 'BOUGHT_BOOK'
-  };
-}
-
-export function failedToBuy(errorMessage) {
-  return stopSubmit('buy', {_error: errorMessage});
-}
-
-export function charge(status, response, values, packageId) {
-  if(response.error) {
-    return failedToBuy(response.error.message);
   }
+}
 
-  return (dispatch, getState) => {
+export function markBuyFormAsFinished() {
+  return {
+    type: 'MARK_BUY_FORM_AS_FINISHED'
+  }
+}
+
+export function markBuyFormAsFailed(errorMessage: string) {
+  return stopSubmit('buy', {_error: errorMessage})
+}
+
+export function charge(response: Object, creditCard: Object, userDetails: Object, packageId: string) {
+  return dispatch => {
     fetch('/buy', {
       method: 'post',
       credentials: 'same-origin',
@@ -40,32 +36,29 @@ export function charge(status, response, values, packageId) {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ stripeToken: response.id, ...values, packageId })
+      body: JSON.stringify({ stripeToken: response.id, ...creditCard, ...userDetails, packageId })
     })
     .then(checkAndParse)
     .then(function(data) {
       dispatch(stopSubmit('buy'));
-      dispatch(boughtBook());
+      dispatch(markBuyFormAsFinished());
       dispatch(addUser(data.user));
     }).catch(function(error) {
-      dispatch(failedToBuy(error.error.message));
+      dispatch(markBuyFormAsFailed(error.error.message));
     })
-  };
+  }
 }
 
-export function buy(values, packageId) {
-  return (dispatch, getState) => {
+export function buy(creditCard: Object, userDetails: Object, packageId: string) {
+  return dispatch => {
     dispatch(startSubmit('buy'));
 
-    const {expiryMonth, expiryYear} = extractExpiryMonthAndYear(values.expiration);
-
-    Stripe.card.createToken({
-      number: cc.sanitizeNumberString(values.number),
-      cvc: values.cvc,
-      exp_month: expiryMonth,
-      exp_year: expiryYear
-    }, (status, response) => {
-      dispatch(charge(status, response, values, packageId));
+    Stripe.card.createToken(creditCard, (status, response) => {
+      if(response.error) {
+        dispatch(markBuyFormAsFailed(response.error.message))
+      } else {
+        dispatch(charge(response, creditCard, userDetails, packageId));
+      }
     });
   }
 }
