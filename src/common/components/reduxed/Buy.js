@@ -3,19 +3,24 @@ import { bindActionCreators } from 'redux';
 import {reduxForm} from 'redux-form';
 import { connect } from 'react-redux';
 import Packages from 'content//Packages';
-import { buy, closeBuyForm, boughtBook } from 'actions//buyForm';
+import { buy, closeBuyForm, markBuyFormAsFinished, markBuyFormAsFailed } from 'actions//buyForm';
 import validate from 'validators//buyForm';
 import LockIcon from 'icons//LockIcon';
 import CloseIcon from 'icons//CloseIcon';
 import Card from 'react-credit-card-thing/lib/components/Card';
-import cc from 'credit-card';
 import cx from 'classnames';
 import Loading from 'react-loading';
 import stripeImg from 'images/stripe@2x.png'
+import stripeCreditCardFromFormValues from 'lib//sanitizers/stripeCreditCardFromFormValues'
+import userDetailsFromFormValues from 'lib//sanitizers/userDetailsFromFormValues'
 
 class Buy extends Component {
-  handleSubmit(values, dispatch) {
-    this.props.buy(values, this.props.packge.id);
+  handleSubmit(values) {
+    try {
+      this.props.buy(stripeCreditCardFromFormValues(), userDetailsFromFormValues(values), this.props.packge.id)
+    } catch (e) {
+      this.props.markBuyFormAsFailed('Your credit is invalid')
+    }
   }
 
   handleClose(e) {
@@ -36,7 +41,7 @@ class Buy extends Component {
 
     if(this.props.submitting) {
       return (
-        <Loading type='bars' color='#e3e3e3' />
+        <Loading type="bars" color="#e3e3e3" />
       );
     } else {
       return (
@@ -52,16 +57,13 @@ class Buy extends Component {
 
   renderForm() {
     const {fields: {number, expiration, cvc, name, email, password, githubUser}, error,
-           pristine, submitting, active, packge, handleSubmit} = this.props;
+           pristine, active, handleSubmit} = this.props;
 
     const focused = active;
     const submit = this.handleSubmit.bind(this);
 
-    const emailField = {};
-    const cardType = cc.determineCardType(number.value);
-
     return (
-      <form onSubmit={handleSubmit(submit)} className='BuyForm'>
+      <form onSubmit={handleSubmit(submit)} className="BuyForm">
         <Card number={number.value} cvc={cvc.value} expiry={expiration.value} name={name.value} focused={focused}  />
 
         <div className="CardNumber__Container">
@@ -146,7 +148,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ buy, closeBuyForm, boughtBook}, dispatch);
+  return bindActionCreators({ buy, closeBuyForm, markBuyFormAsFinished, markBuyFormAsFailed }, dispatch);
 }
 
 Buy = connect(mapStateToProps, mapDispatchToProps)(Buy);
