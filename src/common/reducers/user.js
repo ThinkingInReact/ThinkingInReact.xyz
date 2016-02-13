@@ -1,5 +1,3 @@
-// import {REHYDRATE} from 'redux-persist/constants';
-
 const initialState = {
   isLoggedIn: false,
   boughtPackageId: null,
@@ -25,7 +23,6 @@ function user(state = initialState, action) {
           }
         }
       }
-
       return state;
     default:
       return state;
