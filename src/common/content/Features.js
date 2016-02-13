@@ -11,7 +11,7 @@ Lots of chapters (some might say just the right amount) jammed packed with examp
     desc: `
 Countless full real world example projects that you can clone and follow along. Commits are split up to and there are seperate branches for each section.
     `,
-    image: 'examples',
+    image: 'examples'
   },
   {
     title: '20+ Live Demos',

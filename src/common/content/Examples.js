@@ -30,7 +30,7 @@ Share an image with fellow designers and comment/draw on it instantly! Comments 
     title: 'And More',
     image: 'more',
     desc: `
-Sliders, draggable components, labels, forms incorpating material UI components ([react-toolbox](http://react-toolbox.com/) is pictured at right), jQuery script wrappers, buttons, tabs, table sorters, DatePickers, ColorPickers; are just a few of the things we will build. 
+Sliders, draggable components, labels, forms incorpating material UI components ([react-toolbox](http://react-toolbox.com/) is pictured at right), jQuery script wrappers, buttons, tabs, table sorters, DatePickers, ColorPickers; are just a few of the things we will build.
     `
   }
 ];
