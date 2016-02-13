@@ -18,7 +18,7 @@ describe('POST /buy', () => {
     clearDB(done);
   });
 
-/ it('registers a new user and buys the book when data is valid', (done) => {
+  it('registers a new user and buys the book when data is valid', (done) => {
     var details = {
       email: 'bob@booob.com',
       name: 'Bob',
