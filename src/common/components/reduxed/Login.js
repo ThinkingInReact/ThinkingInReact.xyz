@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import {reduxForm} from 'redux-form';
 import { connect } from 'react-redux';
-import { updateLoginEmail, updateLoginPassword, login, closeLoginForm } from 'actions//loginForm';
+import { login, closeLoginForm } from 'actions//loginForm';
 import c from 'classnames';
 import Loading from 'react-loading';
 import CloseIcon from 'icons//CloseIcon';
@@ -20,13 +20,10 @@ class Login extends Component {
   }
 
   renderLoginOrSubmitting() {
-    const submit = this.handleSubmit.bind(this);
-    const { handleSubmit } = this.props;
-
     if(this.props.submitting) {
       return (
         <div className="Login__Submitting">
-          <Loading type='bars' color='#e3e3e3' />
+          <Loading type="bars" color="#e3e3e3" />
         </div>
       );
     }
@@ -38,7 +35,7 @@ class Login extends Component {
   }
 
   render() {
-    const {fields: {email, password}, error, pristine, submitting, handleSubmit } = this.props;
+    const {fields: {email, password}, error, pristine, handleSubmit } = this.props;
     const submit = this.handleSubmit.bind(this);
 
     return (
@@ -46,13 +43,13 @@ class Login extends Component {
         <a className="LoginClose" href="#" onClick={this.handleClose.bind(this)}>
           <CloseIcon />
         </a>
-        <form onSubmit={handleSubmit(submit)} className='LoginForm'>
+        <form onSubmit={handleSubmit(submit)} className="LoginForm">
            <input type="text"
-                 className={c("Login__Email", {"Login__Email--errors error": email.touched && error})}
+                 className={c('Login__Email', {'Login__Email--errors error': email.touched && error})}
                  placeholder="email" {...email} />
 
            <input type="password"
-             className={c("Login__Password", {"Login__Password--errors erorr": password.touched && error})}
+             className={c('Login__Password', {'Login__Password--errors error': password.touched && error})}
              placeholder="password"
              ref="password" {...password} />
 
