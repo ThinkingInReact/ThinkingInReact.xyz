@@ -9,8 +9,8 @@ var User = new Schema({
   password: String,
   boughtPackageId: String,
   invitedToGitHubRepo: Boolean
-});
+})
 
-User.plugin(passportLocalMongoose, { usernameField: 'email' });
+User.plugin(passportLocalMongoose, { usernameField: 'email' })
 
-module.exports = mongoose.model('users', User);
+module.exports = User;
