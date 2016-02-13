@@ -17,7 +17,7 @@ function buyForm(state = initialState, action) {
         ...state,
         open: false
       };
-    case 'BOUGHT_BOOK':
+    case 'MARK_BUY_FORM_AS_FINISHED':
       return {
         ...state,
         bought: true
