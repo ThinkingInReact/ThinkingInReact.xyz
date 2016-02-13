@@ -34,6 +34,8 @@ module.exports = {
       reducers:   srcPath + '/common' + '/reducers/',
       styles:     srcPath + '/common' + '/styles/',
       validators: srcPath + '/common' + '/validators/',
+      types:      srcPath + '/common' + '/types/',
+      schemas:    srcPath + '/common' + '/schemas/',
     }
   },
   module: {

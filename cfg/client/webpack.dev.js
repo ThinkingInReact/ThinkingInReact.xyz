@@ -39,6 +39,11 @@ config.module.loaders.push({
       }]
     ]
   }
+},
+{
+  test: /(\.jsx|\.js)$/,
+  loader: "eslint-loader",
+  exclude: /node_modules/
 });
 
 module.exports = config;

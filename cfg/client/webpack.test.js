@@ -6,19 +6,17 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.(png|jpg|gif|woff|woff2|css|sass|scss|less|styl)$/,
+        test: /\.(png|jpg|gif|woff|woff2|md|css|sass|scss|less|styl)$/,
         loader: 'null-loader'
       },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel',
-        include: [
-          path.join(__dirname, '../../src/'),
-          path.join(__dirname, '../../test')
-        ]
+        exclude: [/node_modules/]
       }
     ]
   },
+  node : { fs: 'empty' },
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
@@ -26,12 +24,15 @@ module.exports = {
       actions:    srcPath + '/common' + '/actions/',
       components: srcPath + '/common' + '/components/',
       containers: srcPath + '/common' + '/containers/',
-      routes:     srcPath + '/common' + '/routes/',
-      reducers:   srcPath + '/common' + '/reducers/',
-      styles:     srcPath + '/common' + '/styles/',
+      content:    srcPath + '/common' + '/content/',
+      icons:      srcPath + '/common' + '/components/icons/',
       images:     srcPath + '/common' + '/images/',
       lib:        srcPath + '/common' + '/lib/',
-      icons:      srcPath + '/common' + '/components/icons/'
+      reducers:   srcPath + '/common' + '/reducers/',
+      styles:     srcPath + '/common' + '/styles/',
+      validators: srcPath + '/common' + '/validators/',
+      types:      srcPath + '/common' + '/types/',
+      schemas:    srcPath + '/common' + '/schemas/',
     }
   }
 };
