@@ -1,12 +1,7 @@
 import { startSubmit, stopSubmit } from 'redux-form';
 import { checkAndParse } from 'lib//fetchMiddleware';
 import { addUser } from './user';
-
-var serialize = function (data) {
-    return Object.keys(data).map(function (keyName) {
-        return encodeURIComponent(keyName) + '=' + encodeURIComponent(data[keyName])
-    }).join('&');
-};
+import serialize from 'lib//serialize'
 
 export function openLoginForm() {
   return {
@@ -21,7 +16,7 @@ export function closeLoginForm() {
 }
 
 export function login(email, password) {
-  return (dispatch, getState) => {
+  return dispatch => {
     dispatch(startSubmit('login'));
 
     fetch('/login', {
@@ -37,8 +32,8 @@ export function login(email, password) {
       dispatch(stopSubmit('login'));
       dispatch(closeLoginForm())
       dispatch(addUser(data.user));
-    }).catch(function(error) {
-      dispatch(stopSubmit('login', {_error: "email does not exist or password is bad"}));
+    }).catch(function() {
+      dispatch(stopSubmit('login', {_error: 'email does not exist or password is bad'}));
     })
-  };
+  }
 }
