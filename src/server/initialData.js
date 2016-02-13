@@ -1,4 +1,4 @@
-function initialData(req, res) {
+function initialData(req) {
   let user;
 
   if(req.user) {
