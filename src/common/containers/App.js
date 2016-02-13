@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import cx from 'classnames';
 import Header from 'components//reduxed/Header';
 import TOC from 'components//static/TOC';
 import Features from 'components//dumb/Features';
@@ -10,8 +9,6 @@ import Footer from 'components//dumb/Footer';
 
 class App extends Component {
   render() {
-    const { buyFormOpen, loginFormOpen } = this.props;
-
     return (
       <div className="App">
         <Header />
