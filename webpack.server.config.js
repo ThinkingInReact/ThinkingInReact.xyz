@@ -39,6 +39,11 @@ var config = {
       {
         test: /\.(png|jpg|gif|woff|woff2|svg)$/,
         loader: 'null-loader'
+      },
+      {
+        test: /(\.jsx|\.js)$/,
+        loader: "eslint-loader",
+        exclude: /node_modules/
       }
     ]
 	}
