@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Copyright from 'content//Copyright.md';
 import Links from 'content//FooterLinks.js';
 import Author from 'components//static/Author';
 
