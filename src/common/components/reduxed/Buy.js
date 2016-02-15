@@ -19,7 +19,6 @@ class Buy extends Component {
     try {
       this.props.buy(stripeCreditCardFromFormValues(values), userDetailsFromFormValues(values), this.props.packge.id)
     } catch (e) {
-      console.log(e)
       this.props.markBuyFormAsFailed('Your credit card is invalid')
     }
   }
