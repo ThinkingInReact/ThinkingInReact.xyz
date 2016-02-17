@@ -25,7 +25,7 @@ github.authenticate({
 function inviteToGitHubRepo(user) {
 	if(process.env.NODE_ENV != 'development') {
 	  github.orgs.addTeamMembership({id: process.env['GITHUB_TEAM_ID'] , user: user.githubUser}, function(error,info){
-	    if(error){
+	    if(error) {
 	      console.log('Failed To Invite GitHub User', user.githubUser, error);
 	    } else {
 	      console.log('Invited GitHub User', user.githubUser, info);
@@ -52,7 +52,7 @@ router.post('/buy', validate({body: BuySchema}), function(req, res, next) {
 	}, function(err) {
     if(err) {
 			console.log(err);
-			
+
 			switch (err.type) {
 			  case 'StripeCardError':
 			    return res.status(402).json({error: {message: 'Your Card Was Declined' }});
