@@ -63,6 +63,7 @@
     "redux-persist": "^1.4.3",
     "redux-router": "^1.0.0-beta5",
     "redux-thunk": "^1.0.0",
+    "js-schema": "^1.0.1",
     "stripe": "^4.0.0"
   },
   "devDependencies": {
@@ -90,7 +91,6 @@
     "fetch-mock": "^4.1.0",
     "file-loader": "^0.8.4",
     "html-jsx-loader": "^0.1.17",
-    "js-schema": "^1.0.1",
     "karma": "^0.13.19",
     "karma-chai": "^0.1.0",
     "karma-chai-plugins": "^0.6.1",
