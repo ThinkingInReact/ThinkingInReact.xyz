@@ -10,6 +10,10 @@ const Links = [
   {
     text: 'GitHub',
     href: 'https://github.com/ThinkingInReact'
+  },
+  {
+    text: 'Mailing list',
+    href: 'http://eepurl.com/bU3k-j'
   }
 ];
 
