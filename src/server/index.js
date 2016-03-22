@@ -3,7 +3,6 @@
 /**
  * This is compiled to the root of the project (server.js) so all import paths should be relative to that location
  */
-import 'source-map-support/register';
 import path from 'path';
 import React from 'react';
 import ECT from 'ect';
