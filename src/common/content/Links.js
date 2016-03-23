@@ -12,7 +12,7 @@ const Links = [
     href: 'https://github.com/ThinkingInReact'
   },
   {
-    text: 'Mailing list',
+    text: 'Mailing List',
     href: 'http://eepurl.com/bU3k-j'
   }
 ];
