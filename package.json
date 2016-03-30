@@ -14,7 +14,7 @@
     "webpack:clientw": "webpack --config webpack.client.config.js --w",
     "webpack": "npm run webpack:server && npm run webpack:client",
     "dist": "NODE_ENV=production npm run webpack:client",
-    "deploy:gcloud": "gcloud preview app deploy --project thinking-in-react --stop-previous-version",
+    "deploy:gcloud": "npm run dist && npm run webpack:server && gcloud preview app deploy --project thinking-in-react --stop-previous-version",
     "deploy:modulus": "npm run dist && npm run webpack:server && modulus deploy"
   },
   "repository": {
